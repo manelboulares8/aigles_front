@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Ajouter un Employé</h2>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      
+      <label>Nom et Prénom :</label>
+      <input type="text" formControlName="fullName" required>
+      
+      <label>Échelon :</label>
+      <input type="text" formControlName="echelon" required>
+  
+      <label>Classe :</label>
+      <input type="text" formControlName="classe" required>
+  
+      <label>Grade :</label>
+      <input type="text" formControlName="grade" required>
+  
+      <label>Matricule :</label>
+      <input type="text" formControlName="matricule" required>
+  
+      <button type="submit"  [disabled]="employeeForm.invalid">Ajouter</button>
+    </form>
+  </div>
+  

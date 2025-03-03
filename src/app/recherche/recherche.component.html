@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar avec Recherche</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Styles globaux */
+    body, html {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #f5a583;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: white !important;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      margin-left: 10px;
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .navbar-nav .dropdown-menu {
+      right: 0;
+      left: auto;
+    }
+
+    /* Container principal */
+    .container {
+      max-width: 1200px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    /* Carte contenant la liste des employés */
+    .card {
+      margin-top: 20px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .table {
+      margin-bottom: 0;
+    }
+    .mr-2{
+        font-size: medium;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="assets/logoo.jpg" alt="Logo">
+      <h3>Aigles</h3>  
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Ajouter un employé</a>
+            <a class="dropdown-item" href="#">Se déconnecter</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Autre option</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Conteneur principal -->
+  <div class="container">
+    <!-- Formulaire de recherche -->
+    <form class="form-inline mb-3">
+      <div class="form-group mx-sm-3 mt-2">
+        <label class="mr-2"><b>Veuillez entrer la matricule de l'employé :</b></label>
+        <input [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+      </div>
+    </form>
+
+    <!-- Carte contenant la liste des employés -->
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">Liste des employés</h5>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Matricule</th>
+              <th>Nom et prénom</th>
+              <th>Acte</th>
+              <th>Classe</th>
+              <th>Grade</th>
+              <th>Echelon</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+         <!---<tbody>
+            <tr *ngFor="let employee of allEmployees | searchFilter: searchTerm">
+              <td>{{employee.matricule}}</td>
+              <td>{{employee.nomPrenom}}</td>
+              <td>{{employee.acte}}</td>
+              <td>{{employee.classe}}</td>
+              <td>{{employee.grade}}</td>
+              <td>{{employee.echelon}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="supprimerEmployee(employee)">Supprimer</button>
+              </td>
+            </tr>
+          </tbody>-->
+          <tbody>
+            <tr>
+                <td>MB-10</td>
+                <td>Boulares Manel</td>
+                <td>Secrétaire d'Administration</td>
+                <td>1</td>
+                <td>Technicien supérieur</td>
+                <td>1</td>
+                <td><a class="btn btn-danger" (click)="supprimerEmployee(employee)">Supprimer</a></td>
+
+            </tr>
+            <tr>
+                <td>M123</td>
+                <td>Dupont Jean</td>
+                <td>Chef de projet</td>
+                <td>3</td>
+                <td>Ingénieur</td>
+                <td>2</td>
+                <td><a class="btn btn-danger" (click)="supprimerEmployee(employee)">Supprimer</a></td>
+
+            </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

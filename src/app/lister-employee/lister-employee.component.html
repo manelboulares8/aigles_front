@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar with Logo</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Supprimer les marges et paddings par défaut du body et html */
+    body, html {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #f5a583;
+    }
+
+    /* Navbar en blanc */
+    .navbar {
+      background-color: white !important;
+    }
+
+    /* Aligner le logo à droite du texte "Navbar" */
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      margin-left: 10px;
+      width: 50px;
+      height: auto;
+      margin-right: 30%;
+    }
+
+    /* Aligner le dropdown à droite */
+    .navbar-nav .dropdown-menu {
+      right: 0;
+      left: auto; /* Annule l'alignement par défaut à gauche */
+    }
+
+    /* Container sous la navbar */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      margin-top: 20px; /* Espace entre la navbar et le container */
+    }
+
+    /* Style pour la carte */
+    .card {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="assets/logoo.jpg" alt="Logo">
+        <h3>Aigles</h3>  
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto"> <!-- ml-auto pour aligner les éléments à droite -->
+        <li class="nav-item active">
+        </li>
+       
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Ajouter un employé</a>
+            <a class="dropdown-item" href="#">Se déconnecter</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Container sous la navbar -->
+  <div class="container">
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Liste des employés</th>
+            </tr>
+            <tr>
+              <th>Matricule</th>
+              <th>Nom et prénom</th>
+              <th>Acte</th>
+              <th>Classe</th>
+              <th>Grade</th>
+              <th>Echelon</th>
+            </tr>
+          </thead>
+         <!--- <tbody *ngFor="let employee of employees">
+            <tr>
+              <td>{{employee.matricule}}</td>
+              <td>{{employee.nomPrenom}}</td>
+              <td>{{employee.acte}}</td>
+              <td>{{employee.classe}}</td>
+              <td>{{employee.grade}}</td>
+              <td>{{employee.echelon}}</td>
+              <td><a class="btn btn-danger" (click)="supprimerEmployee(employee)">Supprimer</a></td>
+            </tr>
+          </tbody>-->
+          <tbody>
+            <tr>
+                <td>MB-10</td>
+                <td>Boulares Manel</td>
+                <td>Secrétaire</td>
+                <td>1</td>
+                <td>02</td>
+                <td>1</td>
+                <td><a class="btn btn-danger" (click)="supprimerEmployee(employee)">Supprimer</a></td>
+
+            </tr>
+            <tr>
+                <td>553221-C</td>
+                <td>JOSEPH THOMAS ELANGA</td>
+                <td>Intégration sur titre d’un fonctionnaire de catégorie B ou C sans acte rapportant</td>
+                <td>2</td>
+                <td>Secrétaire d'Administration</td>
+                <td>01</td>
+                <td><a class="btn btn-danger" (click)="supprimerEmployee(employee)">Supprimer</a></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ajout de jQuery, Popper.js et Bootstrap JS dans le bon ordre -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <!-- jQuery complet -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script> <!-- Popper.js -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
+</body>
+</html>
