@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../../service/employee.service';
 import { Employee } from '../../model/employee.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-employee',
@@ -13,7 +14,8 @@ export class AddEmployeeComponent implements OnInit {
  employeeForm: FormGroup;
  newEmployee: Employee = new Employee();
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService) {
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService,    private router: Router,
+  ) {
     this.employeeForm = this.fb.group({
       nomPrenom: ['', Validators.required],
       echelon: ['', Validators.required],
@@ -38,6 +40,8 @@ export class AddEmployeeComponent implements OnInit {
           downloadLink.href = window.URL.createObjectURL(pdfBlob);
           downloadLink.download = fileName;
           downloadLink.click();
+          this.router.navigate(['/lister-employee']);
+
         },
         error: (err) => {
           console.error('Erreur lors de l\'ajout de l\'employé ou de la génération du PDF :', err);

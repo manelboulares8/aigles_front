@@ -31,7 +31,7 @@ export class EmployeeService  implements OnInit{
   supprimerEmployee(e:Employee): Observable<any> {
     // Assurez-vous que l'ID de l'étudiant est valide
     if (!e || !e.matricule) {
-      console.error("ID du médicament invalide");
+      console.error("Matricule de l'employee invalide");
       return new Observable(); // Retourne une Observable vide en cas d'erreur
     }
     

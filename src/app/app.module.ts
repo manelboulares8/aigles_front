@@ -19,7 +19,6 @@ import { CommonModule } from '@angular/common';
     AppComponent,
   //  EmployeeFormComponent,
     AddEmployeeComponent,
-  LoginComponent,
   ListerEmployeeComponent,
   
   ],
@@ -30,7 +29,9 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
-    SearchFilterPipe  
+    SearchFilterPipe  ,
+    LoginComponent,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

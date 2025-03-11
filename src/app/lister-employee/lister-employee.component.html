@@ -50,6 +50,10 @@
     .card {
       margin-top: 20px;
     }
+    h3{
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    }
   </style>
 </head>
 <body>
@@ -90,7 +94,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Liste des employés</th>
+              <th>Liste des employés porteurs de codes QR</th>
             </tr>
             <tr>
               <th>Matricule</th>
@@ -101,7 +105,7 @@
               <th>Echelon</th>
             </tr>
           </thead>
-         <!--- <tbody *ngFor="let employee of employees">
+         <tbody *ngFor="let employee of employees">
             <tr>
               <td>{{employee.matricule}}</td>
               <td>{{employee.nomPrenom}}</td>
@@ -111,29 +115,8 @@
               <td>{{employee.echelon}}</td>
               <td><a class="btn btn-danger" (click)="supprimerEmployee(employee)">Supprimer</a></td>
             </tr>
-          </tbody>-->
-          <tbody>
-            <tr>
-                <td>MB-10</td>
-                <td>Boulares Manel</td>
-                <td>Secrétaire</td>
-                <td>1</td>
-                <td>02</td>
-                <td>1</td>
-                <td><a class="btn btn-danger" (click)="supprimerEmployee(employee)">Supprimer</a></td>
-
-            </tr>
-            <tr>
-                <td>553221-C</td>
-                <td>JOSEPH THOMAS ELANGA</td>
-                <td>Intégration sur titre d’un fonctionnaire de catégorie B ou C sans acte rapportant</td>
-                <td>2</td>
-                <td>Secrétaire d'Administration</td>
-                <td>01</td>
-                <td><a class="btn btn-danger" (click)="supprimerEmployee(employee)">Supprimer</a></td>
-
-            </tr>
           </tbody>
+         
         </table>
       </div>
     </div>

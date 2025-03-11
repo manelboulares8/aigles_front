@@ -1,25 +1,41 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../../model/user.model';
+import { UserService } from '../../service/user.service';
+import { CommonModule } from '@angular/common'; // Importer CommonModule
+import { ReactiveFormsModule } from '@angular/forms';  // Importer ReactiveFormsModule
 
 @Component({
   selector: 'app-login',
-  standalone: false,
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css'],
+  imports: [CommonModule,ReactiveFormsModule], // Ajouter CommonModule ici
+
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  signupForm: FormGroup;
   submitted = false;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router,private userService: UserService) {
+    // Formulaire de connexion
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]]
     });
+
+    // Formulaire d'inscription
+    this.signupForm = this.fb.group({
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(4)]]
+    });
   }
 
+  // Fonction pour soumettre le formulaire de connexion
   Login() {
     this.submitted = true;
     this.errorMessage = '';
@@ -37,37 +53,29 @@ export class LoginComponent {
     }
   }
 
+  // Fonction pour soumettre le formulaire d'inscription
+  OnSignUpSubmit() {
+    if (this.signupForm.valid) {
+      const user: User = this.signupForm.value;
+      this.userService.registerUser(user).subscribe({
+        next: (response) => {
+          console.log('Utilisateur inscrit avec succès:', response);
+        },
+        error: (err) => {
+          console.error('Erreur lors de l\'inscription:', err);
+        }
+      });
+    } else {
+      console.log("Formulaire invalide !");
+    }
+  }
+  
+
   get formControls() {
     return this.loginForm.controls;
   }
 
-
-  // Fonction de validation du mot de passe
- /* validatePassword(): boolean {
-    if (this.password !== this.confirmPassword) {
-      alert('Les mots de passe ne correspondent pas.');
-      return false;
-    }
-    return true;
+  get signUpControls() {
+    return this.signupForm.controls;
   }
- 
-
-  // Fonction de connexion
-  onLoginSubmit(): void {
-    this.router.navigate(["./lister-employee/lister-employee.component"]);
-    if (this.email && this.password) {
-      console.log('Connexion avec:', this.email, this.password);
-      // Implémentez ici la logique pour se connecter à votre backend
-    } else {
-      alert('Veuillez remplir tous les champs');
-    }
-  }
-
-  // Fonction d'inscription
-  onSignupSubmit(): void {
-    if (this.validatePassword()) {
-      console.log('Inscription avec:', this.email, this.password);
-      // Implémentez ici la logique pour inscrire l'utilisateur dans votre backend
-    }
-  }*/
 }
